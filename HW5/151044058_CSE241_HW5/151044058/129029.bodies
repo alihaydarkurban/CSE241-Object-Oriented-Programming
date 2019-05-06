@@ -1,0 +1,14 @@
+class Point2D
+!!!134917.cpp!!!	Point2D()
+		//Empty
+!!!135045.cpp!!!	Point2D(in x : double, in y : double)
+		koor_x = x;
+		koor_y = y;
+!!!135173.cpp!!!	setKoor_x(in koor_xValue : double) : void
+		koor_x = koor_xValue;
+!!!135301.cpp!!!	setKoor_y(in koor_yValue : double) : void
+		koor_y = koor_yValue;
+!!!135429.cpp!!!	getKoor_x() : double
+		return koor_x;
+!!!135557.cpp!!!	getKoor_y() : double
+		return koor_y;

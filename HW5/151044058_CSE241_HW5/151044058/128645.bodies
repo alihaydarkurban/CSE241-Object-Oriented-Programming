@@ -1,0 +1,99 @@
+class Rectangle
+!!!140549.cpp!!!	Rectangle()
+		static_total_area = static_total_area + area(); //Satatic alani arttirir
+		static_total_PL = static_total_PL + perimeter();	//Static cevreyi arttirir
+!!!140677.cpp!!!	Rectangle(in temp_width : double, in temp_height : double)
+		if(temp_width <= 0 || temp_height <= 0) //Uzunluklarin negatif gelmesi durumda throw yaptim
+			throw Rectangle_Error();
+
+		width = temp_width;
+		height = temp_height;
+		static_total_area = static_total_area + area();	//Satatic alani arttirir
+		static_total_PL = static_total_PL + perimeter(); 	//Static cevreyi arttirir
+!!!140805.cpp!!!	Rectangle(in temp_width : double, in temp_height : double, in temp_cordinate_x : double, in temp_cordinate_y : double)
+		//Uzunluklarin ve koordinatlarin hatali gelmesi durumda throw yapiyorum
+		if(temp_width <= 0 || temp_height <= 0 || temp_cordinate_x < 0 || temp_cordinate_y < 0 ||
+			temp_cordinate_x > temp_width || temp_cordinate_x > temp_height || 
+			temp_cordinate_y > temp_width || temp_cordinate_y > temp_height)
+			throw Rectangle_Error();
+		width = temp_width;
+		height = temp_height;
+		cordinate_x = temp_cordinate_x;
+		cordinate_y = temp_cordinate_y;
+		static_total_area = static_total_area + area();	//Satatic alani arttirir
+		static_total_PL = static_total_PL + perimeter();	//Static cevreyi arttirir
+!!!140933.cpp!!!	getWidth() : double
+ return width;
+!!!141061.cpp!!!	getHeight() : double
+ return height;
+!!!141189.cpp!!!	getCor_x() : double
+ return cordinate_x;
+!!!141317.cpp!!!	getCor_y() : double
+ return cordinate_y;
+!!!141445.cpp!!!	setWidth(in widthValue : double) : void
+ 
+		width = widthValue; 
+!!!141573.cpp!!!	setHeight(in heightValue : double) : void
+ 
+		height = heightValue; 
+!!!141701.cpp!!!	setCor_x(in cordinate_xValue : double) : void
+ 
+		cordinate_x = cordinate_xValue;
+!!!141829.cpp!!!	setCor_y(in cordinate_yValue : double) : void
+ 
+		cordinate_y = cordinate_yValue; 
+!!!141957.cpp!!!	perimeter() : double
+ 
+		return(2 * (width + height)); 
+!!!142085.cpp!!!	area() : double
+		return(width * height);
+!!!142213.cpp!!!	return_total_area() : double
+		return static_total_area;
+!!!142341.cpp!!!	return_total_PL() : double
+		return static_total_PL;
+!!!142469.cpp!!!	operator ++() : Shape
+		cordinate_x = cordinate_x + 1;
+		cordinate_y = cordinate_y + 1;
+		return *this;
+!!!142597.cpp!!!	operator ++(in ignore : int) : Shape
+		double cordinate_x_temp = cordinate_x;
+		double cordinate_y_temp = cordinate_y;
+
+		cordinate_x_temp = cordinate_x_temp + 1;
+		cordinate_y_temp = cordinate_y_temp + 1;
+		cordinate_x = cordinate_x_temp;
+		cordinate_y = cordinate_y_temp;
+		return *this;
+!!!142725.cpp!!!	operator --() : Shape
+		cordinate_x = cordinate_x - 1;
+		cordinate_y = cordinate_y - 1;
+		return *this;
+!!!142853.cpp!!!	operator --(in ignore : int) : Shape
+		double cordinate_x_temp = cordinate_x;
+		double cordinate_y_temp = cordinate_y;
+
+		cordinate_x_temp = cordinate_x_temp - 1;
+		cordinate_y_temp = cordinate_y_temp - 1;
+		cordinate_x = cordinate_x_temp;
+		cordinate_y = cordinate_y_temp;
+		return *this;
+!!!142981.cpp!!!	operator +(in bigger : double) : Rectangle
+		return(Rectangle( (width + bigger),(height + bigger) ) );
+!!!143109.cpp!!!	operator -(in smaller : double) : Rectangle
+		return(Rectangle( (width - smaller), (height - smaller) ) );
+!!!143237.cpp!!!	draw_Shape(inout file : ostream) : void
+		if(this->getType() == "RECTANGLE") //Buyuk sekil cizdirirken renk beklirmek icin
+		{
+			file << "<rect  x=" << "\"" << this->getCor_x() << "\"" << " y=" << "\"" << this->getCor_y() <<  "\"" << " width=" <<  "\""  << this->getWidth()  <<
+			"\"" << " height=" <<  "\"" <<  this->getHeight() << "\"" << " fill=\"red\" stroke=\"white\" />\n" ;	
+		}
+		else if(this->getType() == "rectangle") //Kucuk sekil cizdirirken renk belirlemek icin
+		{
+			file << "<rect  x=" << "\"" << this->getCor_x() << "\"" << " y=" << "\"" << this->getCor_y() <<  "\"" << " width=" <<  "\""  << this->getWidth()  <<
+			"\"" << " height=" <<  "\"" <<  this->getHeight() << "\"" << " fill=\"green\" stroke=\"white\" />\n" ;
+		}
+
+!!!143365.cpp!!!	getType() : string
+		return type;
+!!!143493.cpp!!!	setType(in typeValue : string) : void
+		type = typeValue;

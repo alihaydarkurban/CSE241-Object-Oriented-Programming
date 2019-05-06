@@ -1,0 +1,16 @@
+class Shape
+!!!144389.cpp!!!	operator ==(inout other : Shape) : bool
+		double const min = 0.00001;	//Double sayilarin karsilastirilmasi icin
+		return(abs(this->area() - other.area()) < min);
+!!!144517.cpp!!!	operator !=(inout other : Shape) : bool
+		return(!(*this == other));
+!!!144645.cpp!!!	operator >(inout other : Shape) : bool
+		double const min = 0.00001;	//Double sayilarin karsilastirilmasi icin
+		return((this->area() - other.area()) > min);
+!!!144773.cpp!!!	operator <=(inout other : Shape) : bool
+		return(!(*this > other));
+!!!145029.cpp!!!	operator <<(inout file : ostream, inout obje : Shape) : ostream
+		file << "<svg viewBox=\"1.1\"\n" << "baseProfile=\"full\"\n" << "xmlns=\"http:/" << "/www.w3.org/2000/svg\">\n";
+		obje.draw_Shape(file); //virtual bir fonksiyon oldugu icin runtime da hangi objeyse onun draw_Shape fonksiyonunu cagirir
+		file <<"</svg>\n";
+		return file;

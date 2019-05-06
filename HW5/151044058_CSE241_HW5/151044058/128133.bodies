@@ -1,0 +1,93 @@
+class Circle
+!!!128005.cpp!!!	Circle()
+ 
+		static_total_area = static_total_area + area(); //Static alani arttirma
+		static_total_PL = static_total_PL + perimeter(); // Static Cevreyi arttirma
+!!!128133.cpp!!!	Circle(in temp_radius : double)
+		//Radius un negatif gelmesi durumunda throw yaptim
+		if(temp_radius <= 0)
+			throw Circle_Error();
+		radius = temp_radius;
+		static_total_area = static_total_area + area(); //Static alani arttirma
+		static_total_PL = static_total_PL + perimeter();	// Static Cevreyi arttirma
+!!!128261.cpp!!!	Circle(in temp_radius : double, in cX : double, in cY : double)
+		//Radiusun ve koordinatlarin hatali gelemsi durumunda throw yaptim
+		if(temp_radius <= 0 || cX < 0 || cY < 0 ||
+			cX > temp_radius || cY > temp_radius)
+			throw Circle_Error();
+		radius = temp_radius;
+		center_x = cX;
+		center_y = cY;
+		static_total_area = static_total_area + area(); //Static alani arttirma
+		static_total_PL = static_total_PL + perimeter();// Static Cevreyi arttirma
+!!!128389.cpp!!!	getRadius() : double
+ return radius;
+!!!128517.cpp!!!	getCenter_x() : double
+ return center_x;
+!!!128645.cpp!!!	getCenter_y() : double
+ return center_y;
+!!!128773.cpp!!!	setRadius(in radiusValue : double) : void
+ 
+		radius = radiusValue; 
+!!!128901.cpp!!!	setCenter_x(in center_xValue : double) : void
+ 
+		center_x = center_xValue; 
+!!!129029.cpp!!!	setCenter_y(in center_yValue : double) : void
+ 
+		center_y = center_yValue; 
+!!!129157.cpp!!!	perimeter() : double
+		const double PI = M_PI;
+		return(2 * PI * radius);
+!!!129285.cpp!!!	area() : double
+		const double PI = M_PI;
+		return(PI * radius * radius);
+!!!129413.cpp!!!	return_total_area() : double
+		return static_total_area;
+!!!129541.cpp!!!	return_total_PL() : double
+		return static_total_PL;
+!!!129669.cpp!!!	operator ++() : Shape
+		center_x = center_x + 1;
+		center_y = center_y + 1;
+		return *this;
+!!!129797.cpp!!!	operator ++(in ignore : int) : Shape
+		double center_x_temp = center_x;
+		double center_y_temp = center_y;
+		center_x_temp = center_x_temp + 1;
+		center_y_temp = center_y_temp + 1;
+		center_x = center_x_temp;
+		center_y = center_y_temp;
+
+		return *this;
+!!!129925.cpp!!!	operator --() : Shape
+		center_x = center_x - 1;
+		center_y = center_y - 1;
+		return *this;
+!!!130053.cpp!!!	operator --(in ignore : int) : Shape
+		double center_x_temp = center_x;
+		double center_y_temp = center_y;
+		center_x_temp = center_x_temp - 1;
+		center_y_temp = center_y_temp - 1;
+		center_x = center_x_temp;
+		center_y = center_y_temp;
+
+		return *this;
+!!!130181.cpp!!!	operator +(in bigger : double) : Circle
+		return(Circle((radius + bigger),center_x,center_y));
+!!!130309.cpp!!!	operator -(in smaller : double) : Circle
+		return(Circle((radius - smaller),center_x,center_y));
+!!!130437.cpp!!!	getType() : string
+		return type;
+!!!130565.cpp!!!	setType(in typeValue : string) : void
+		type = typeValue;
+!!!130693.cpp!!!	draw_Shape(inout file : ostream) : void
+		if(this->getType() == "CIRCLE")//Buyuk sekillleri kirmizi yazdirmak icin
+		{
+			file << "<circle cx=" << "\"" << this->getCenter_x() << "\"" << " cy=" << "\"" <<  this->getCenter_y() << "\"" << " r="
+				 << "\"" << this->getRadius() << "\"" <<  " fill=\"red\" stroke=\"white\" />\n";
+		}
+		else if(this->getType() == "circle")//Kucuk sekillleri yesil yazdirmak icin
+		{
+			file << "<circle cx=" << "\"" << this->getCenter_x() << "\"" << " cy=" << "\"" <<  this->getCenter_y() << "\"" << " r="
+				 << "\"" << this->getRadius() << "\"" <<  " fill=\"green\" stroke=\"white\" />\n";
+		}
+

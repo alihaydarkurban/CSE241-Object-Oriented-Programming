@@ -1,0 +1,54 @@
+format 221
+"HW5" // HW5::HW5
+  revision 1
+  modified_by 5 "Ali Haydar Kurban"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  cpp_h_dir "D:\\Desktop\\alihw5\\HW5/"
+  cpp_src_dir "D:\\Desktop\\alihw5\\HW5/"
+  deploymentview 128133 "HW5"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 129029 "main"
+      stereotype "source"
+      cpp_src "//Global fonksiyon
+
+int main()
+{ 
+	driver();
+	test_functions();
+	return 0;
+}
+"
+      associated_elems
+      end
+    end
+  end
+end

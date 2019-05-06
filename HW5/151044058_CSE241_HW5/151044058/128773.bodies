@@ -1,0 +1,146 @@
+class Triangle
+!!!145157.cpp!!!	Triangle()
+		length = 600, cordinate_x1 = 300, cordinate_x2 = 0, cordinate_x3 = 600;
+		cordinate_y1 = 0.0, cordinate_y2 = (600.0 * sqrt(3.0) / 2.0), cordinate_y3 = (600.0 * sqrt(3.0) / 2.0);
+		
+		static_total_area = static_total_area + area(); //static alani arttirma;
+		static_total_PL = static_total_PL + perimeter();	//static cevreyi arttirma
+!!!145285.cpp!!!	Triangle(in temp_length : double)
+		//Uzunlugun negatif gelmesi durumunda throw yaptim
+		if(temp_length <= 0)
+			throw Triangle_Error();
+		length = temp_length;
+		static_total_area = static_total_area + area(); //static alani arttirma;
+		static_total_PL = static_total_PL + perimeter(); //static cevreyi arttirma
+!!!145413.cpp!!!	Triangle(in temp_length : double, in x1 : double, in x2 : double, in x3 : double, in y1 : double, in y2 : double, in y3 : double)
+		//Uzunlugun ve koordinatlarin hatali gelmesi durumunda throw yaptim
+		if(temp_length <= 0 || x1 < 0 || x2 < 0 || x3 < 0 || y1 < 0 || y2 < 0 || y3 < 0 ||
+		   x1 > temp_length || x2 > temp_length || x3 > temp_length ||
+		   y1 > temp_length || y2 > temp_length || y3 > temp_length)
+			throw Triangle_Error();
+
+		length = temp_length;
+		cordinate_x1 = x1;
+		cordinate_x2 = x2;
+		cordinate_x3 = x3;
+		cordinate_y1 = y1;
+		cordinate_y2 = y2;
+		cordinate_y3 = y3;
+		static_total_area = static_total_area + area(); //static alani arttirma;
+		static_total_PL = static_total_PL + perimeter(); //static cevreyi arttirma
+!!!145541.cpp!!!	getLength() : double
+ return length;
+!!!145669.cpp!!!	getCor_x1() : double
+ return cordinate_x1;
+!!!145797.cpp!!!	getCor_x2() : double
+ return cordinate_x2;
+!!!145925.cpp!!!	getCor_x3() : double
+ return cordinate_x3;
+!!!146053.cpp!!!	getCor_y1() : double
+ return cordinate_y1;
+!!!146181.cpp!!!	getCor_y2() : double
+ return cordinate_y2;
+!!!146309.cpp!!!	getCor_y3() : double
+ return cordinate_y3;
+!!!146437.cpp!!!	setLength(in lengthValue : double) : void
+ 
+		length = lengthValue; 
+!!!146565.cpp!!!	setCor_x1(in cordinate_x1Value : double) : void
+ 
+		cordinate_x1 = cordinate_x1Value;
+!!!146693.cpp!!!	setCor_x2(in cordinate_x2Value : double) : void
+ 
+		cordinate_x2 = cordinate_x2Value; 
+!!!146821.cpp!!!	setCor_x3(in cordinate_x3Value : double) : void
+ 
+		cordinate_x3 = cordinate_x3Value; 
+!!!146949.cpp!!!	setCor_y1(in cordinate_y1Value : double) : void
+ 
+		cordinate_y1 = cordinate_y1Value; 
+!!!147077.cpp!!!	setCor_y2(in cordinate_y2Value : double) : void
+ 
+		cordinate_y2 = cordinate_y2Value;
+!!!147205.cpp!!!	setCor_y3(in cordinate_y3Value : double) : void
+ 
+		cordinate_y3 = cordinate_y3Value; 
+!!!147333.cpp!!!	perimeter() : double
+		return(3 * length);	/*Cevre uzunlugu	*/
+!!!147461.cpp!!!	area() : double
+		return(length * length * sqrt(3.0) / 4.0 );	/*Alan	*/
+!!!147589.cpp!!!	return_total_area() : double
+		return static_total_area;
+!!!147717.cpp!!!	return_total_PL() : double
+		return static_total_PL;
+!!!147845.cpp!!!	operator ++() : Shape
+		cordinate_x1 = cordinate_x1 + 1;
+		cordinate_x2 = cordinate_x2 + 1;
+		cordinate_x3 = cordinate_x3 + 1;
+		cordinate_y1 = cordinate_y1 + 1;
+		cordinate_y2 = cordinate_y2 + 1;
+		cordinate_y3 = cordinate_y3 + 1;
+
+		return *this;
+!!!147973.cpp!!!	operator ++(in ignore : int) : Shape
+		double cordinate_x1_temp = cordinate_x1;
+		double cordinate_x2_temp = cordinate_x2;
+		double cordinate_x3_temp = cordinate_x3;
+		double cordinate_y1_temp = cordinate_y1;		
+		double cordinate_y2_temp = cordinate_y2;
+		double cordinate_y3_temp = cordinate_y3;
+		cordinate_x1_temp = cordinate_x1_temp + 1;
+		cordinate_x2_temp = cordinate_x2_temp + 1;
+		cordinate_x3_temp = cordinate_x3_temp + 1;
+		cordinate_y1_temp = cordinate_y1_temp + 1;
+		cordinate_y2_temp = cordinate_y2_temp + 1;
+		cordinate_y3_temp = cordinate_y3_temp + 1;
+
+		cordinate_x1 = cordinate_x1_temp, cordinate_x2 = cordinate_x2_temp, cordinate_x3 = cordinate_x3_temp;
+		cordinate_y1 = cordinate_y1_temp, cordinate_y2 = cordinate_y2_temp, cordinate_y3 = cordinate_y3_temp;
+
+		return *this;
+!!!148101.cpp!!!	operator --() : Shape
+		cordinate_x1 = cordinate_x1 - 1;
+		cordinate_x2 = cordinate_x2 - 1;
+		cordinate_x3 = cordinate_x3 - 1;
+		cordinate_y1 = cordinate_y1 - 1;
+		cordinate_y2 = cordinate_y2 - 1;
+		cordinate_y3 = cordinate_y3 - 1;
+
+		return *this;
+!!!148229.cpp!!!	operator --(in ignore : int) : Shape
+		double cordinate_x1_temp = cordinate_x1;
+		double cordinate_x2_temp = cordinate_x2;
+		double cordinate_x3_temp = cordinate_x3;
+		double cordinate_y1_temp = cordinate_y1;		
+		double cordinate_y2_temp = cordinate_y2;
+		double cordinate_y3_temp = cordinate_y3;
+		cordinate_x1_temp = cordinate_x1_temp - 1;
+		cordinate_x2_temp = cordinate_x2_temp - 1;
+		cordinate_x3_temp = cordinate_x3_temp - 1;
+		cordinate_y1_temp = cordinate_y1_temp - 1;
+		cordinate_y2_temp = cordinate_y2_temp - 1;
+		cordinate_y3_temp = cordinate_y3_temp - 1;
+
+		cordinate_x1 = cordinate_x1_temp, cordinate_x2 = cordinate_x2_temp, cordinate_x3 = cordinate_x3_temp;
+		cordinate_y1 = cordinate_y1_temp, cordinate_y2 = cordinate_y2_temp, cordinate_y3 = cordinate_y3_temp;
+
+		return *this;
+!!!148357.cpp!!!	operator +(in bigger : double) : Triangle
+		return(Triangle((length + bigger),cordinate_x1, cordinate_x2, cordinate_x3, cordinate_y1, cordinate_y2, cordinate_y3));
+!!!148485.cpp!!!	operator -(in smaller : double) : Triangle
+		return(Triangle((length - smaller),cordinate_x1, cordinate_x2, cordinate_x3, cordinate_y1, cordinate_y2, cordinate_y3));
+!!!148613.cpp!!!	draw_Shape(inout file : ostream) : void
+		if(this->getType() == "TRIANGLE") //Buyuk sekilleri kirmizi cizdirmak icin kosul 
+		{
+			file << "<polygon points=" << "\"" << this->getCor_x1() << " " << this->getCor_y1() << " " << this->getCor_x2() << " " << this->getCor_y2() << " " 
+			 << this->getCor_x3() << " " << this->getCor_y3() << "\"" << " fill=\"red\" stroke=\"white\" />\n" ;
+		}
+		else if(this->getType() == "triangle")	//Kucuk sekilleri yesil cizdirmak icin kosul 
+		{
+			file << "<polygon points=" << "\"" << this->getCor_x1() << " " << this->getCor_y1() << " " << this->getCor_x2() << " " << this->getCor_y2() << " " 
+			 << this->getCor_x3() << " " << this->getCor_y3() << "\"" << " fill=\"green\" stroke=\"white\" />\n" ;
+		}	
+!!!148741.cpp!!!	getType() : string
+		return type;
+!!!148869.cpp!!!	setType(in typeValue : string) : void
+		type = typeValue;

@@ -1,0 +1,82 @@
+class PolygonDyn
+!!!136581.cpp!!!	PolygonDyn()
+		//Empty
+!!!136709.cpp!!!	PolygonDyn(in pol1 : PolygonDyn)
+		int i;
+		size = pol1.size;
+		ptr = new Point2D[size];
+		for(i=0; i<size; ++i)
+		{
+			ptr[i] = pol1.ptr[i];
+		}
+!!!136837.cpp!!!	~PolygonDyn()
+		delete [] ptr;
+		ptr = nullptr;
+!!!136965.cpp!!!	operator =(in pol1 : PolygonDyn) : PolygonDyn
+		if(size != pol1.size)
+		{
+			size = pol1.size;
+			delete [] ptr;
+			ptr = new Point2D[size];
+		}
+		for(int i=0; i<size; ++i)
+		{
+			ptr[i] = pol1.ptr[i];
+		}
+		return *this;
+!!!137093.cpp!!!	PolygonDyn(in rec : Rectangle)
+		
+		int temp_size = 4;
+		size = temp_size;
+		ptr = new Point2D[size]; //Yer ayirma
+		Point2D p1(rec.getCor_x(),rec.getCor_y());
+		ptr[0] = p1;
+		Point2D p2(rec.getCor_x() + rec.getWidth() ,rec.getCor_y());
+		ptr[1] = p2;
+		Point2D p3(rec.getCor_x() + rec.getWidth(),rec.getCor_y() + rec.getHeight());
+		ptr[2] = p3;
+		Point2D p4(rec.getCor_x(),rec.getCor_y() + rec.getHeight());
+		ptr[3] = p4;
+
+!!!137221.cpp!!!	PolygonDyn(in tri : Triangle)
+		int temp_size = 3;
+		size = temp_size;
+		ptr = new Point2D[size];	//Yer ayirma
+
+		Point2D p1(tri.getCor_x1(),tri.getCor_y1());
+		ptr[0] = p1;
+		Point2D p2(tri.getCor_x2(),tri.getCor_y2());
+		ptr[1] = p2;
+		Point2D p3(tri.getCor_x3(),tri.getCor_y3());
+		ptr[2] = p3;
+!!!137349.cpp!!!	PolygonDyn(in cir : Circle)
+		const double PI = M_PI;
+		int i,temp_size = 100;
+		size = temp_size;
+		ptr = new Point2D[size]; //Yer ayirma
+
+		//Circle donusum formulu
+		for(i = 1; i <= size; ++i)
+		{
+			Point2D p1(cir.getCenter_x()+(cir.getRadius()*sin(((2.0*PI)/100.0)*i)), cir.getCenter_y()+(cir.getRadius()*cos(((2.0*PI)/100.0)*i)));
+			ptr[i-1] = p1;
+		}
+!!!137477.cpp!!!	operator [](in index : int) : Point2D
+		if(index >= size)
+			index = size - 1;
+
+		return ptr[index];
+
+!!!137605.cpp!!!	getSize() : int
+		return size;
+!!!137733.cpp!!!	setSize(in sizeValue : int) : void
+		size = sizeValue;
+!!!138629.cpp!!!	draw_Shape(inout file : ostream) : void
+		int i;
+
+		file << "<polygon points=\"";
+		for(i = 0; i < this->size; ++i)
+		{
+			file << this->ptr[i].getKoor_x()<<" "<< this->ptr[i].getKoor_y()<<" ";	 
+		}
+		file<< "\" fill=\"blue\" stroke=\"white\" />\n" ;

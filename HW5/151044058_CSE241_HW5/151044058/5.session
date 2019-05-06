@@ -1,0 +1,12 @@
+window_sizes 1800 901 450 1344 715 128
+
+diagrams
+  active  classdiagram_ref 128005 // 151044058_HW5
+    1344 715 100 C 0 0
+end
+show_stereotypes
+selected class_ref 129541 // Triangle_Error
+open
+  classview_ref 128005 // HW5
+end
+end
