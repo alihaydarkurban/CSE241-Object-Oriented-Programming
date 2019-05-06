@@ -18,5 +18,5 @@ If you want to run this program again enter these commands in terminal:
   
   
 Method of drawAll is called line of 246 in the mainapp class.
-If you remove comment line in the line of 246, it will work. 
+If you remove comment line in the line of 246, it works. 
 It opens 21 windows, each of them has spahes.
